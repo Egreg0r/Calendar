@@ -47,10 +47,11 @@ namespace Calendar
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.Size = new System.Drawing.Size(94, 23);
             this.dateTimePickerDate.TabIndex = 0;
+            this.dateTimePickerDate.Value = new System.DateTime(2022, 1, 20, 22, 40, 43, 0);
             // 
             // dateTimePickerTime
             // 
-            this.dateTimePickerTime.CustomFormat = "hh:mm";
+            this.dateTimePickerTime.CustomFormat = "HH:mm";
             this.dateTimePickerTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerTime.Location = new System.Drawing.Point(112, 36);
             this.dateTimePickerTime.Name = "dateTimePickerTime";
@@ -64,15 +65,16 @@ namespace Calendar
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(372, 23);
             this.textBoxTitle.TabIndex = 2;
+            this.textBoxTitle.TextChanged += new System.EventHandler(this.textBoxTitle_TextChanged);
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Location = new System.Drawing.Point(12, 81);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(30, 15);
+            this.labelTitle.Size = new System.Drawing.Size(35, 15);
             this.labelTitle.TabIndex = 3;
-            this.labelTitle.Text = "Title";
+            this.labelTitle.Text = "Title*";
             // 
             // textBoxDetail
             // 

@@ -38,6 +38,7 @@ namespace Calendar
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewReminders = new System.Windows.Forms.DataGridView();
             this.buttonFilter = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReminders)).BeginInit();
             this.SuspendLayout();
@@ -73,9 +74,9 @@ namespace Calendar
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.createToolStripMenuItem.Text = "Create...";
-            this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
+            this.createToolStripMenuItem.Click += new System.EventHandler(this.Create_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -117,12 +118,23 @@ namespace Calendar
             this.buttonFilter.TabIndex = 5;
             this.buttonFilter.Text = "Filter";
             this.buttonFilter.UseVisualStyleBackColor = true;
+            this.buttonFilter.Click += new System.EventHandler(this.buttonFilter_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(404, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 557);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonFilter);
             this.Controls.Add(this.dataGridViewReminders);
             this.Controls.Add(this.dateTimePickerEnd);
@@ -149,6 +161,7 @@ namespace Calendar
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.DataGridView dataGridViewReminders;
         private System.Windows.Forms.Button buttonFilter;
+        private System.Windows.Forms.Button button1;
     }
 }
 

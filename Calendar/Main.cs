@@ -17,10 +17,20 @@ namespace Calendar
             InitializeComponent();
         }
 
-        // открываем окно для добавления задачи
-        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void buttonFilter_Click(object sender, EventArgs e)
         {
-            Form CreateNewTask = new Form();
+
         }
+
+        // открываем окно для добавления задачи
+        private void Create_Click(object sender, EventArgs e)
+        {
+
+            CreateReminder newReminder = new CreateReminder();
+            newReminder.ShowDialog();
+
+        }
+
     }
 }

@@ -24,14 +24,16 @@ namespace Calendar.Controller
         /// Create new reminder
         /// </summary>
         /// <param name="reminder"></param>
-        public void Create (Reminder reminder)
+        public void Create (DateTime dateTime, string title, string detail)
         {
-            var title = reminder.Title;
-            var date = reminder.DateTime;
-            if (title == "") return;
-            
-            var guid = Guid.NewGuid();
-            reminder.Id = guid;
+            var reminder =  new Reminder()
+            {
+                Id = Guid.NewGuid(),
+                DateTime = dateTime,
+                Title = title,
+                Detail = detail
+            };
+
             _baseContent.Add(reminder);
             try
             {
@@ -41,7 +43,6 @@ namespace Calendar.Controller
             {
                
             }
-
 
         }
 
