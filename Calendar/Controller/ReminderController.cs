@@ -46,6 +46,13 @@ namespace Calendar.Controller
 
         }
 
+        public List<Reminder> GetRemindersAtRange (DateTime start, DateTime end)
+        {
+            var remList =  _baseContent.Reminders.Where(st => st.DateTime >= start && st.DateTime <= end);
+            return remList.ToList();
+
+        }
+
 
 
 
