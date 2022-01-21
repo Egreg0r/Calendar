@@ -16,7 +16,7 @@ namespace Calendar.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.13");
 
-            modelBuilder.Entity("Calendar.Model.Task", b =>
+            modelBuilder.Entity("Calendar.Model.Reminder", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

@@ -29,6 +29,8 @@ namespace Calendar
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +42,13 @@ namespace Calendar
             this.buttonFilter = new System.Windows.Forms.Button();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonFilterToday = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePickerTimer = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReminders)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +57,7 @@ namespace Calendar
             // 
             this.dateTimePickerStart.CustomFormat = "dd.MM.yyyy hh:mm";
             this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStart.Location = new System.Drawing.Point(12, 27);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(15, 28);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(87, 23);
             this.dateTimePickerStart.TabIndex = 1;
@@ -92,30 +101,35 @@ namespace Calendar
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // dateTimePickerEnd
             // 
-            this.dateTimePickerEnd.CustomFormat = "dd.MM.yyyy hh:mm";
-            this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(105, 28);
+            this.dateTimePickerEnd.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(123, 28);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(87, 23);
             this.dateTimePickerEnd.TabIndex = 3;
+            this.dateTimePickerEnd.Value = new System.DateTime(2022, 1, 20, 0, 0, 0, 0);
             // 
             // dataGridViewReminders
             // 
+            this.dataGridViewReminders.AllowUserToAddRows = false;
+            this.dataGridViewReminders.AllowUserToDeleteRows = false;
             this.dataGridViewReminders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewReminders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewReminders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReminders.Location = new System.Drawing.Point(12, 57);
             this.dataGridViewReminders.Name = "dataGridViewReminders";
+            this.dataGridViewReminders.ReadOnly = true;
             this.dataGridViewReminders.RowTemplate.Height = 25;
             this.dataGridViewReminders.Size = new System.Drawing.Size(788, 489);
             this.dataGridViewReminders.TabIndex = 4;
             // 
             // buttonFilter
             // 
-            this.buttonFilter.Location = new System.Drawing.Point(208, 28);
+            this.buttonFilter.Location = new System.Drawing.Point(232, 27);
             this.buttonFilter.Name = "buttonFilter";
             this.buttonFilter.Size = new System.Drawing.Size(75, 23);
             this.buttonFilter.TabIndex = 5;
@@ -135,7 +149,7 @@ namespace Calendar
             // 
             // buttonFilterToday
             // 
-            this.buttonFilterToday.Location = new System.Drawing.Point(290, 27);
+            this.buttonFilterToday.Location = new System.Drawing.Point(313, 27);
             this.buttonFilterToday.Name = "buttonFilterToday";
             this.buttonFilterToday.Size = new System.Drawing.Size(75, 23);
             this.buttonFilterToday.TabIndex = 7;
@@ -143,11 +157,76 @@ namespace Calendar
             this.buttonFilterToday.UseVisualStyleBackColor = true;
             this.buttonFilterToday.Click += new System.EventHandler(this.buttonFilterToday_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Calendar";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(108, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(12, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "-";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(105, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "-";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(430, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Напомнить за";
+            // 
+            // dateTimePickerTimer
+            // 
+            this.dateTimePickerTimer.CustomFormat = "mm";
+            this.dateTimePickerTimer.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerTimer.Location = new System.Drawing.Point(520, 28);
+            this.dateTimePickerTimer.Name = "dateTimePickerTimer";
+            this.dateTimePickerTimer.ShowUpDown = true;
+            this.dateTimePickerTimer.Size = new System.Drawing.Size(37, 23);
+            this.dateTimePickerTimer.TabIndex = 10;
+            this.dateTimePickerTimer.Value = new System.DateTime(2022, 1, 21, 0, 5, 0, 0);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(564, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 15);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "минут";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 557);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dateTimePickerTimer);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonFilterToday);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.buttonFilter);
@@ -155,9 +234,13 @@ namespace Calendar
             this.Controls.Add(this.dateTimePickerEnd);
             this.Controls.Add(this.dateTimePickerStart);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Main";
+            this.Activated += new System.EventHandler(this.Main_Activated);
+            this.Shown += new System.EventHandler(this.Main_Shown);
+            this.Resize += new System.EventHandler(this.Main_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReminders)).EndInit();
@@ -178,6 +261,13 @@ namespace Calendar
         private System.Windows.Forms.Button buttonFilter;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonFilterToday;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTimer;
+        private System.Windows.Forms.Label label4;
     }
 }
 

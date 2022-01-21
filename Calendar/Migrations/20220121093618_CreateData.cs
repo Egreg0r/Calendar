@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Calendar.Migrations
 {
-    public partial class Create : Migration
+    public partial class CreateData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

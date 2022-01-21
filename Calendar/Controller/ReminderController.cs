@@ -17,6 +17,8 @@ namespace Calendar.Controller
     {
         private readonly BaseContent _baseContent;
 
+        private static List<Reminder> remindOldList = new List<Reminder>();
+
         public ReminderController()
         {
             _baseContent = new BaseContent();
@@ -41,12 +43,45 @@ namespace Calendar.Controller
 
         }
 
-        public List<ReminderShort> GetRemindersAtRange (DateTime start, DateTime end)
+        public List<ReminderShort> GetReminderShortsAtRange (DateTime start, DateTime end)
         {
 
-            var remList = _baseContent.Reminders.Where(st => st.DateTime >= start && st.DateTime <= end);
-            return remList.ToList();
+            var reminders = _baseContent.Reminders.Where(st => st.DateTime >= start && st.DateTime <= end)
+                .Select(x => 
+                new ReminderShort()
+                {
+                    DateTime = x.DateTime,
+                    Title = x.Title
+                })
+                .ToList();
+            return reminders;
         }
+
+
+        /// <summary>
+        /// receive a list of notifications until which there are minute left
+        /// </summary>
+        /// <param name="milisecon"></param>
+        /// <returns></returns>
+        public List<Reminder> GetNotificationList (int minute = 5)
+        {
+            var nowTime = DateTime.Now;
+            // дата 
+            var endTime = nowTime.AddMinutes(minute);
+
+            var remindNewList = _baseContent.Reminders.Where(st => st.DateTime >= nowTime && st.DateTime <= endTime).ToList();
+
+            //Определяем новые уведомления
+            var diffList = remindNewList.Except(remindOldList).ToList();
+
+            remindOldList = remindNewList;
+
+            if (diffList.Count != 0)
+                return diffList.ToList();
+            else
+                return null;
+        }
+
 
 
 

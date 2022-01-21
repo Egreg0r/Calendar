@@ -136,7 +136,10 @@ namespace Calendar
             this.Controls.Add(this.textBoxTitle);
             this.Controls.Add(this.dateTimePickerTime);
             this.Controls.Add(this.dateTimePickerDate);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateReminder";
+            this.ShowIcon = false;
             this.Text = "Create Reminder";
             this.ResumeLayout(false);
             this.PerformLayout();
