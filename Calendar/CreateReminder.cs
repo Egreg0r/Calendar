@@ -13,22 +13,25 @@ namespace Calendar
 {
     public partial class CreateReminder : Form
     {
+        ReminderController _reminderController; 
         public CreateReminder()
         {
             InitializeComponent();
-            var now = DateTime.UtcNow;
+            var now = DateTime.Now;
             dateTimePickerDate.Value = now;
+            dateTimePickerDate.MinDate = now;
             dateTimePickerTime.Value = now;
+            
             buttonOk.Enabled = false;
+            _reminderController = new ReminderController();
+
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            DateTime dateTime = Convert.ToDateTime(dateTimePickerDate.Value.ToString() + dateTimePickerTime.Value.ToString());
-
-            var remContr = new ReminderController();
-            remContr.Create(dateTime, textBoxTitle.Text, textBoxDetail.Text);
-            
+            DateTime dateTime = Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString() +" "+ dateTimePickerTime.Value.ToShortTimeString());
+            _reminderController.Create(dateTime, textBoxTitle.Text, textBoxDetail.Text);
+            Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

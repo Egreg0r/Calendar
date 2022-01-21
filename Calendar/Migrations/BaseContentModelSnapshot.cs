@@ -34,7 +34,7 @@ namespace Calendar.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Reminders");
                 });
 #pragma warning restore 612, 618
         }

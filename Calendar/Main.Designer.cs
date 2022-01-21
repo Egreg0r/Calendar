@@ -39,6 +39,7 @@ namespace Calendar
             this.dataGridViewReminders = new System.Windows.Forms.DataGridView();
             this.buttonFilter = new System.Windows.Forms.Button();
             this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonFilterToday = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReminders)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +48,7 @@ namespace Calendar
             // 
             this.dateTimePickerStart.CustomFormat = "dd.MM.yyyy hh:mm";
             this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStart.Location = new System.Drawing.Point(114, 27);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(12, 27);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(87, 23);
             this.dateTimePickerStart.TabIndex = 1;
@@ -96,16 +97,17 @@ namespace Calendar
             // 
             this.dateTimePickerEnd.CustomFormat = "dd.MM.yyyy hh:mm";
             this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(12, 27);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(105, 28);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(87, 23);
             this.dateTimePickerEnd.TabIndex = 3;
             // 
             // dataGridViewReminders
             // 
+            this.dataGridViewReminders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewReminders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewReminders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewReminders.Location = new System.Drawing.Point(12, 56);
+            this.dataGridViewReminders.Location = new System.Drawing.Point(12, 57);
             this.dataGridViewReminders.Name = "dataGridViewReminders";
             this.dataGridViewReminders.RowTemplate.Height = 25;
             this.dataGridViewReminders.Size = new System.Drawing.Size(788, 489);
@@ -129,12 +131,24 @@ namespace Calendar
             this.buttonCreate.TabIndex = 6;
             this.buttonCreate.Text = "Add..";
             this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.Create_Click);
+            // 
+            // buttonFilterToday
+            // 
+            this.buttonFilterToday.Location = new System.Drawing.Point(290, 27);
+            this.buttonFilterToday.Name = "buttonFilterToday";
+            this.buttonFilterToday.Size = new System.Drawing.Size(75, 23);
+            this.buttonFilterToday.TabIndex = 7;
+            this.buttonFilterToday.Text = "Today";
+            this.buttonFilterToday.UseVisualStyleBackColor = true;
+            this.buttonFilterToday.Click += new System.EventHandler(this.buttonFilterToday_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 557);
+            this.Controls.Add(this.buttonFilterToday);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.buttonFilter);
             this.Controls.Add(this.dataGridViewReminders);
@@ -163,6 +177,7 @@ namespace Calendar
         private System.Windows.Forms.DataGridView dataGridViewReminders;
         private System.Windows.Forms.Button buttonFilter;
         private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Button buttonFilterToday;
     }
 }
 

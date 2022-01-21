@@ -26,6 +26,7 @@ namespace Calendar.Model
             options.UseSqlite(connection);
         }
 
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //}

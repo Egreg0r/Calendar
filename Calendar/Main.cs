@@ -13,15 +13,28 @@ namespace Calendar
 {
     public partial class Main : Form
     {
+        ReminderController _reminderController;
+
+        //переменные для хранения ограничения филтра
+        DateTime start, end;
         public Main()
         {
+            var now = DateTime.Now;
             InitializeComponent();
+            dateTimePickerStart.MinDate = now;
+            dateTimePickerEnd.MinDate = now.AddDays(1);
+
+            _reminderController = new ReminderController();
+            start = dateTimePickerStart.Value;
+            end = dateTimePickerEnd.Value;
+            dataGridViewReminders.DataSource = _reminderController.GetRemindersAtRange(start, end);
+            dataGridViewReminders.Columns["ID"].Visible = false;
         }
 
 
         private void buttonFilter_Click(object sender, EventArgs e)
         {
-
+            dataGridViewReminders.DataSource = _reminderController.GetRemindersAtRange(start, end);
         }
 
         // открываем окно для добавления задачи
@@ -33,6 +46,10 @@ namespace Calendar
 
         }
 
+        private void buttonFilterToday_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
     }
